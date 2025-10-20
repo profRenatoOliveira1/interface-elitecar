@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EliteCar - Listagem de Pedidos</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <link rel="stylesheet" href="/css/listagens.css">
+</head>
+
+<body>
+    <header class="cabecalho">
+        <a href="/index.html">ÍNICIO</a>
+        <a href="/pages/clientes/lista-clientes.html">CLIENTES</a>
+        <a href="/pages/carros/lista-carros.html">CARROS</a>
+        <a href="/pages/pedidos/lista-pedidos.html">PEDIDOS</a>
+    </header>
+
+    <main class="conteudo-principal">
+        <div class="div-btn-novo">
+            <button class="btn-novo">NOVO PEDIDO</button>
+        </div>
+        <div class="div-titulo-tabela">
+            <h2>PEDIDOS</h2>
+        </div>
+        <div class="div-vazio"></div>
+        <div class="div-tabela">
+            <table class="tabela">
+                <thead>
+                    <tr>
+                        <th>ID PEDIDO</th>
+                        <th>CLIENTE</th>
+                        <th>CARRO</th>
+                        <th>DATA PEDIDO</th>
+                        <th>VALOR</th>
+                        <th>AÇÃO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>JOSÉ DA SILVA</td>
+                        <td>CHEVROLET ONYX</td>
+                        <td>18/03/2025</td>
+                        <td>R$ 68.912,39</td>
+                        <td class="td-acao">
+                            <img src="/assets/delete_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="remover" onclick="alert('remover')">
+                            <img src="/assets/edit_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="editar" onclick="alert('editar')">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>MARIA JOAQUINA</td>
+                        <td>HONDA CIVIC</td>
+                        <td>06/09/2025</td>
+                        <td>R$ 114.928,23</td>
+                        <td class="td-acao">
+                            <img src="/assets/delete_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="remover" onclick="alert('remover')">
+                            <img src="/assets/edit_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="editar" onclick="alert('editar')">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>LUIZ BOÇA</td>
+                        <td>HYUNDAI HB-20</td>
+                        <td>10/10/2025</td>
+                        <td>R$ 87.125,25</td>
+                        <td class="td-acao">
+                            <img src="/assets/delete_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="remover" onclick="alert('remover')">
+                            <img src="/assets/edit_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="editar" onclick="alert('editar')">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+
+</html>

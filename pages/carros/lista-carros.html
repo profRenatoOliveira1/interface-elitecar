@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EliteCar - Listagem de Carros</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <link rel="stylesheet" href="/css/listagens.css">
+</head>
+
+<body>
+    <header class="cabecalho">
+        <a href="/index.html">ÍNICIO</a>
+        <a href="/pages/clientes/lista-clientes.html">CLIENTES</a>
+        <a href="/pages/carros/lista-carros.html">CARROS</a>
+        <a href="/pages/pedidos/lista-pedidos.html">PEDIDOS</a>
+    </header>
+
+    <main class="conteudo-principal">
+        <div class="div-btn-novo">
+            <button class="btn-novo">NOVO CARRO</button>
+        </div>
+        <div class="div-titulo-tabela">
+            <h2>CARROS</h2>
+        </div>
+        <div class="div-vazio"></div>
+        <div class="div-tabela">
+            <table class="tabela">
+                <thead>
+                    <tr>
+                        <th>ID CARRO</th>
+                        <th>MARCA</th>
+                        <th>MODELO</th>
+                        <th>ANO</th>
+                        <th>COR</th>
+                        <th>AÇÃO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>HONDA</td>
+                        <td>CIVIC</td>
+                        <td>2025</td>
+                        <td>PRETO</td>
+                        <td class="td-acao">
+                            <img src="/assets/delete_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="remover" onclick="alert('remover')">
+                            <img src="/assets/edit_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="editar" onclick="alert('editar')">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>CHEVROLET</td>
+                        <td>ONYX</td>
+                        <td>2023</td>
+                        <td>VERMELHO</td>
+                        <td class="td-acao">
+                            <img src="/assets/delete_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="remover" onclick="alert('remover')">
+                            <img src="/assets/edit_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="editar" onclick="alert('editar')">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>HYUNDAI</td>
+                        <td>HB-20</td>
+                        <td>2022</td>
+                        <td>PRATA</td>
+                        <td class="td-acao">
+                            <img src="/assets/delete_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="remover" onclick="alert('remover')">
+                            <img src="/assets/edit_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="editar" onclick="alert('editar')">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+
+</html>
