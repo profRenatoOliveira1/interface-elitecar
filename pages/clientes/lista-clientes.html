@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EliteCar - Listagem de Clientes</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <link rel="stylesheet" href="/css/clientes.css">
+</head>
+
+<body>
+    <header class="cabecalho">
+        <a href="/index.html">ÍNICIO</a>
+        <a href="/pages/clientes/lista-clientes.html">CLIENTES</a>
+        <a href="/pages/carros/lista-carros.html">CARROS</a>
+        <a href="/pages/pedidos/lista-pedidos.html">PEDIDOS</a>
+    </header>
+
+    <main class="conteudo-principal">
+        <div class="div-btn-novo">
+            <button class="btn-novo">NOVO CLIENTE</button>
+        </div>
+        <div class="div-titulo-tabela">
+            <h2>CLIENTES</h2>
+        </div>
+        <div class="div-vazio"></div>
+        <div class="div-tabela">
+            <table class="tabela">
+                <thead>
+                    <tr>
+                        <th>ID CLIENTE</th>
+                        <th>NOME</th>
+                        <th>CPF</th>
+                        <th>TELEFONE</th>
+                        <th>AÇÃO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>JOSÉ DA SILVA</td>
+                        <td>111.111.111-11</td>
+                        <td>19 9 9999-9999</td>
+                        <td class="td-acao">
+                            <img src="/assets/delete_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="remover" onclick="alert('remover')">
+                            <img src="/assets/edit_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="editar" onclick="alert('editar')">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>MARIA JOAQUINA</td>
+                        <td>222.222.222-22</td>
+                        <td>19 9 1111-1111</td>
+                        <td class="td-acao">
+                            <img src="/assets/delete_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="remover" onclick="alert('remover')">
+                            <img src="/assets/edit_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="editar" onclick="alert('editar')">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>LUIZ BOÇA</td>
+                        <td>333.333.333-33</td>
+                        <td>19 9 2222-2222</td>
+                        <td class="td-acao">
+                            <img src="/assets/delete_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="remover" onclick="alert('remover')">
+                            <img src="/assets/edit_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="editar" onclick="alert('editar')">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+
+</html>

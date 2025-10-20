@@ -1,14 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
 :root {
     --cor-principal: #0D0D87;
     --cor-background: #E0E0E0;
     --cor-destaque: #EFEFEF;
-    --cor-cabecalho-tabela: #404040;
+    --cor-cabecalho-tabela: #5b5b5b;
     --cor-corpo-tabela: #363636;
 }
 
 * {
     margin: 0;
     padding: 0;
+
+    font-family: "Noto Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+body {
+    background-color: var(--cor-background);
 }
 
 .cabecalho {
@@ -22,34 +35,6 @@
 .cabecalho a {
     color: white;
     text-decoration: none;
-}
-
-.conteudo-principal {
-    display: flex;
-    flex-direction: row;
-    background-color: var(--cor-background);
-}
-
-.ctn-esquerdo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 50%;
-}
-
-.ctn-esquerdo img {
-   width: 50%;
-   margin-top: 10%;
-   margin-bottom: 10%;
-}
-
-.ctn-direito {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 50%;
-}
-
-.ctn-direito {
-    width: 40%;
+    font-size: 1.2rem;
+    /* AUMENTA A FONTE EM 20% DO TAMANHO PADRÃO DO NAVEGADOR */
 }
