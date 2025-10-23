@@ -23,33 +23,3 @@
     color: white;
     text-decoration: none;
 }
-
-.conteudo-principal {
-    display: flex;
-    flex-direction: row;
-    background-color: var(--cor-background);
-}
-
-.ctn-esquerdo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 50%;
-}
-
-.ctn-esquerdo img {
-   width: 50%;
-   margin-top: 10%;
-   margin-bottom: 10%;
-}
-
-.ctn-direito {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 50%;
-}
-
-.ctn-direito {
-    width: 40%;
-}
