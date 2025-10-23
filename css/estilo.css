@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
 :root {
     --cor-principal: #0D0D87;
     --cor-background: #E0E0E0;
@@ -9,6 +11,11 @@
 * {
     margin: 0;
     padding: 0;
+
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .cabecalho {
