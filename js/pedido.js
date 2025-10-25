@@ -1,4 +1,4 @@
-const enderecoServidor = 'http://localhost:3333';   // endereço da API
+const enderecoServidor = 'https://elitecar-api.onrender.com';   // endereço da API
 const endpointPedidos = '/api/pedidos'; // endpoint (rota) da API
 
 /**

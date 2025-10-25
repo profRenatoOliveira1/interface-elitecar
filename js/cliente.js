@@ -1,4 +1,4 @@
-const enderecoServidor = `http://localhost:3333`; // endereço da API
+const enderecoServidor = `https://elitecar-api.onrender.com`; // endereço da API
 const endpointClientes = `/api/clientes`; // endpoint (rota) da API
 
 /**
@@ -58,7 +58,7 @@ async function montarTabelaClientes() {
         // Inserindo as propriedades do icone de deletar
         iconeDeletar.src = "/assets/delete_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg";
         iconeDeletar.alt = "remover";
-        iconeDeletar.addEventListener("click", () => { alert('remover') });
+        iconeDeletar.addEventListener("click", () => { removerCliente(cliente) });
 
         // Inserindo as propriedades do icone de atualizar
         iconeAtualizar.src = "/assets/edit_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg";
@@ -114,4 +114,14 @@ function formatarTelefone(telefone) {
 
     // Aplica a máscara (##) # ####-####
     return telefoneLimpo.replace(/(\d{2})(\d{1})(\d{4})(\d{4})/, '($1) $2 $3-$4');
+}
+
+function removerCliente(cliente) {
+    const confirmacao = confirm(`Deseja mesmo remover o cliente ${cliente.nome}?`);
+
+    if(confirmacao) {
+        console.log(`deletar ${cliente.idCliente}`);
+    } else {
+        return;
+    }
 }
