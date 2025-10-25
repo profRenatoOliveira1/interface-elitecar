@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EliteCar - Novo Pedido</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <link rel="stylesheet" href="/css/cadastro.css">
+</head>
+
+<body>
+    <header class="cabecalho">
+        <a href="/index.html">ÍNICIO</a>
+        <a href="/pages/clientes/lista-clientes.html">CLIENTES</a>
+        <a href="/pages/carros/lista-carros.html">CARROS</a>
+        <a href="/pages/pedidos/lista-pedidos.html">PEDIDOS</a>
+    </header>
+
+    <main class="conteudo-principal">
+        <div class="div-titulo">
+            <h1>CADASTRO PEDIDO</h1>
+        </div>
+        <div class="div-formulario">
+            <form action="" method="post" class="form-cadastro">
+                <label for="nome-cliente">
+                    Cliente *
+                    <select name="nome-cliente" id="nome-cliente" required>
+                        <option value="">
+                            Escolha uma opção
+                        </option>
+                        <option value="1">
+                            José da Silva
+                        </option>
+                        <option value="2">
+                            Maria Joaquina
+                        </option>
+                        <option value="3">
+                            Luiz Boça
+                        </option>
+                    </select>
+                </label>
+                <label for="marca-carro">
+                    Carro *
+                    <select name="marca-carro" id="marca-carro" required>
+                        <option value="">
+                            Escolha uma opção
+                        </option>
+                        <option value="1">
+                            Volkswagem Gol 2000
+                        </option>
+                        <option value="2">
+                            Ford Mustang 1985
+                        </option>
+                        <option value="3">
+                            Hyundai HB20 2022
+                        </option>
+                    </select>
+                </label>
+                <label for="data-pedido">
+                    Data Pedido *
+                    <input type="date" name="data-pedido" id="data-pedido" required>
+                </label>
+                <label for="valor-pedido">
+                    Valor do Pedido *
+                    <input type="number" name="valor-pedido" id="valor-pedido" placeholder="Informe o valor do pedido" required>
+                </label>
+                <p style="color: red">* Campos obrigatórios</p>
+
+                <input type="submit" value="CADASTRAR PEDIDO">
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>

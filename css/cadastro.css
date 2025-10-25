@@ -26,7 +26,9 @@
 
 input[type="text"],
 input[type="number"],
-input[type="tel"] {
+input[type="tel"],
+input[type="date"],
+select {
     height: 4vh;
     border-radius: 5px;
     border: 1px solid #434343;
