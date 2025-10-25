@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EliteCar - Editar Cadastro - Cliente</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <link rel="stylesheet" href="/css/cadastro.css">
+</head>
+
+<body>
+    <header class="cabecalho">
+        <a href="/index.html">ÍNICIO</a>
+        <a href="/pages/clientes/lista-clientes.html">CLIENTES</a>
+        <a href="/pages/carros/lista-carros.html">CARROS</a>
+        <a href="/pages/pedidos/lista-pedidos.html">PEDIDOS</a>
+    </header>
+
+    <main class="conteudo-principal">
+        <div class="div-titulo">
+            <h1>EDITAR CADASTRO - CARRO</h1>
+        </div>
+        <div class="div-formulario">
+            <form action="" method="post" class="form-cadastro">
+                <label for="marca-carro">
+                    Marca *
+                    <input type="text" id="marca-carro" name="marca-carro" placeholder="Insira a marca do carro"
+                        minlength="3" required>
+                </label>
+                <label for="modelo-carro">
+                    Modelo *
+                    <input type="text" id="modelo-carro" name="modelo-carro"
+                        placeholder="Insira o modelo do carro" minlength="3" required>
+                </label>
+                <label for="ano-carro">
+                    Ano *
+                    <input type="number" id="ano-carro" name="ano-carro"
+                        placeholder="Insira o ano do carro" required>
+                </label>
+                <label for="cor-carro">
+                    Cor *
+                    <input type="text" id="cor-carro" name="cor-carro"
+                        placeholder="Insira a cor do carro" required>
+                </label>
+                <p style="color: red">* Campos obrigatórios</p>
+
+                <input type="submit" value="ATUALIZAR CARRO">
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>
