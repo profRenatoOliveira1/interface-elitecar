@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/css/listagens.css">
 </head>
 
-<body>
+<body onload="montarTabelaCarros()">
     <header class="cabecalho">
         <a href="/index.html">ÍNICIO</a>
         <a href="/pages/clientes/lista-clientes.html">CLIENTES</a>
@@ -38,43 +38,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>HONDA</td>
-                        <td>CIVIC</td>
-                        <td>2025</td>
-                        <td>PRETO</td>
-                        <td class="td-acao">
-                            <img src="/assets/delete_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="remover" onclick="alert('remover')">
-                            <img src="/assets/edit_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="editar" onclick="alert('editar')">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>CHEVROLET</td>
-                        <td>ONYX</td>
-                        <td>2023</td>
-                        <td>VERMELHO</td>
-                        <td class="td-acao">
-                            <img src="/assets/delete_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="remover" onclick="alert('remover')">
-                            <img src="/assets/edit_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="editar" onclick="alert('editar')">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>HYUNDAI</td>
-                        <td>HB-20</td>
-                        <td>2022</td>
-                        <td>PRATA</td>
-                        <td class="td-acao">
-                            <img src="/assets/delete_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="remover" onclick="alert('remover')">
-                            <img src="/assets/edit_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="editar" onclick="alert('editar')">
-                        </td>
-                    </tr>
+                    
                 </tbody>
             </table>
         </div>
     </main>
+
+    <script src="/js/carro.js"></script>
 </body>
 
 </html>

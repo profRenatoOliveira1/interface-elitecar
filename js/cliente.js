@@ -1,17 +1,32 @@
-const enderecoServidor = `http://localhost:3333`;
-const endpointClientes = `/api/clientes`;
+const enderecoServidor = `http://localhost:3333`; // endereço da API
+const endpointClientes = `/api/clientes`; // endpoint (rota) da API
 
 /**
  * Recupera as informações dos clientes na API
  * @returns JSON com informações dos clientes
  */
 async function listarClientes() {
+    // Faz uma requisição HTTP para a URL formada pela junção do endereço do servidor e o endpoint da API de clientes.
+    // A palavra-chave 'await' faz com que o código espere a resposta da API antes de continuar.
     const respostaAPI = await fetch(`${enderecoServidor}${endpointClientes}`);
+
+    // Verifica se a resposta da API foi bem-sucedida (códigos de status HTTP 200–299).
+    // Se não for, entra no bloco 'if' para tratar o erro.
     if (!respostaAPI.ok) {
+        // Exibe no console um erro com o código de status da resposta e o texto retornado pela API.
+        // Isso ajuda a identificar o motivo da falha na requisição.
         console.error('Erro na requisição:', respostaAPI.status, await respostaAPI.text());
+
+        // Encerra a execução da função, retornando 'undefined'.
+        // Isso evita que o código continue tentando usar uma resposta inválida.
         return;
     }
+
+    // Converte o corpo da resposta da API (que está em formato JSON) em um objeto JavaScript.
+    // Também usa 'await' porque essa conversão é assíncrona.
     const jsonClientes = await respostaAPI.json();
+
+    // Retorna o objeto JavaScript contendo os dados dos clientes para quem chamou essa função.
     return jsonClientes;
 }
 
@@ -24,11 +39,12 @@ async function montarTabelaClientes() {
     // obtendo o elemento tabela
     const tabela = document.querySelector('table');
 
-    // criando a tag de corpo da tabela
+    // obtendo a tag de corpo da tabela
     const tbody = document.querySelector('tbody');
 
+    // percorre toda a lista de clientes
+    // para cada interação é criado um objeto apelidado de cliente
     listaDeClientes.forEach(cliente => {
-        console.log(cliente);
         // Criando os elementos da tabela
         const tableRow = document.createElement('tr');
         const tdIdCliente = document.createElement('td');
@@ -54,7 +70,7 @@ async function montarTabelaClientes() {
         tdNomeCliente.textContent = cliente.nome;
         tdCpfCliente.textContent = formatarCPF(cliente.cpf);
         tdTelefoneCliente.textContent = formatarTelefone(cliente.telefone);
-        
+
         // Anexando os ícones no tdAcoes
         tdAcoes.appendChild(iconeDeletar);
         tdAcoes.appendChild(iconeAtualizar);
@@ -82,7 +98,7 @@ async function montarTabelaClientes() {
 function formatarCPF(cpf) {
     // Remove caracteres não numéricos
     const cpfLimpo = cpf.replace(/\D/g, '');
-    
+
     // Aplica a máscara ###.###.###-##
     return cpfLimpo.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
 }

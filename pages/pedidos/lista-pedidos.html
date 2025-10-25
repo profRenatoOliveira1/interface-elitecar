@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/css/listagens.css">
 </head>
 
-<body>
+<body onload="montarTabelaPedidos()">
     <header class="cabecalho">
         <a href="/index.html">ÍNICIO</a>
         <a href="/pages/clientes/lista-clientes.html">CLIENTES</a>
@@ -38,43 +38,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>JOSÉ DA SILVA</td>
-                        <td>CHEVROLET ONYX</td>
-                        <td>18/03/2025</td>
-                        <td>R$ 68.912,39</td>
-                        <td class="td-acao">
-                            <img src="/assets/delete_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="remover" onclick="alert('remover')">
-                            <img src="/assets/edit_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="editar" onclick="alert('editar')">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>MARIA JOAQUINA</td>
-                        <td>HONDA CIVIC</td>
-                        <td>06/09/2025</td>
-                        <td>R$ 114.928,23</td>
-                        <td class="td-acao">
-                            <img src="/assets/delete_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="remover" onclick="alert('remover')">
-                            <img src="/assets/edit_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="editar" onclick="alert('editar')">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>LUIZ BOÇA</td>
-                        <td>HYUNDAI HB-20</td>
-                        <td>10/10/2025</td>
-                        <td>R$ 87.125,25</td>
-                        <td class="td-acao">
-                            <img src="/assets/delete_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="remover" onclick="alert('remover')">
-                            <img src="/assets/edit_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="editar" onclick="alert('editar')">
-                        </td>
-                    </tr>
+                    
                 </tbody>
             </table>
         </div>
     </main>
+
+    <script src="/js/pedido.js"></script>
 </body>
 
 </html>
