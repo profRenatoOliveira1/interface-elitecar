@@ -1,0 +1,16 @@
+.conteudo-principal {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    gap: 0px;
+}
+    
+.ctn-titulo {
+    grid-column: span 8 / span 8;
+}
+
+.ctn-formulario {
+    grid-column: span 8 / span 8;
+    grid-row: span 7 / span 7;
+    grid-row-start: 2;
+}

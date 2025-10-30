@@ -19,11 +19,16 @@
 }
 
 .cabecalho {
+    background-color: var(--cor-principal);
+    height: 70px;
+}
+
+.cabecalho nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: var(--cor-principal);
-    height: 70px;
+
+    height: 100%;
 }
 
 .cabecalho a {

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EliteCar - Cadastro de Cliente</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <link rel="stylesheet" href="/css/cadastro.css">
+</head>
+
+<body>
+    <header class="cabecalho">
+        <nav>
+            <a href="/index.html">INÍCIO</a>
+            <a href="/pages/cliente/lista-clientes.html">CLIENTES</a>
+            <a href="/pages/carro/lista-carros.html">CARROS</a>
+            <a href="/pages/pedido/lista-pedidos.html">PEDIDOS</a>
+        </nav>
+    </header>
+
+    <main class="conteudo-principal">
+        <div class="ctn-titulo">
+            <h2>CADASTRO CLIENTE</h2>
+        </div>
+        <div class="ctn-formulario">
+            <form action="" method="post">
+                <label for="nome-cliente">
+                    Nome
+                    <input 
+                        type="text" 
+                        name="nome-cliente" 
+                        id="nome-cliente" 
+                        placeholder="Digite o seu nome">
+                </label>
+
+                <label for="cpf-cliente">
+                    CPF
+                    <input 
+                        type="number" 
+                        name="cpf-cliente" 
+                        id="cpf-cliente" 
+                        placeholder="Digite o CPF (somente números)">
+                </label>
+                
+                <label for="telefone-cliente">
+                    Telefone
+                    <input 
+                        type="number" 
+                        name="cpf-cliente" 
+                        id="cpf-cliente"
+                        placeholder="Digite o telefone (somente números)">
+                </label>
+                
+                <input type="submit" value="CADASTRAR">
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>
