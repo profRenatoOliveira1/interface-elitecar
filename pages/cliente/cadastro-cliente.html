@@ -26,32 +26,39 @@
         <div class="ctn-formulario">
             <form action="" method="post">
                 <label for="nome-cliente">
-                    Nome
+                    Nome 
                     <input 
                         type="text" 
                         name="nome-cliente" 
                         id="nome-cliente" 
-                        placeholder="Digite o seu nome">
+                        placeholder="Digite o seu nome"
+                        minlength="3"
+                        required
+                    >
                 </label>
 
                 <label for="cpf-cliente">
-                    CPF
+                    CPF 
                     <input 
                         type="number" 
                         name="cpf-cliente" 
                         id="cpf-cliente" 
-                        placeholder="Digite o CPF (somente números)">
+                        placeholder="Digite o CPF (somente números)"
+                        required    
+                    >
                 </label>
                 
                 <label for="telefone-cliente">
-                    Telefone
+                    Telefone 
                     <input 
                         type="number" 
                         name="cpf-cliente" 
                         id="cpf-cliente"
-                        placeholder="Digite o telefone (somente números)">
+                        placeholder="Digite o telefone (somente números)"
+                        required
+                    >
                 </label>
-                
+
                 <input type="submit" value="CADASTRAR">
             </form>
         </div>
