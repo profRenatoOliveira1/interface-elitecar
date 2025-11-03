@@ -142,9 +142,9 @@ async function enviarFormularioCadastro(event) {
         // Exibe no console a URL que será usada na requisição (útil para testes e depuração)
         console.log(`${enderecoServidor}${endpointClientes}`);
 
-        // Envia uma requisição HTTP PUT para a API, atualizando os dados do cliente
+        // Envia uma requisição HTTP POST para a API, atualizando os dados do cliente
         const respostaAPI = await fetch(`${enderecoServidor}${endpointClientes}`, {
-            method: 'POST', // método HTTP usado para atualizar dados
+            method: 'POST', // método HTTP usado para inserir dados
             headers: {
                 'Content-type': 'application/json' // informa que os dados estão no formato JSON
             },
