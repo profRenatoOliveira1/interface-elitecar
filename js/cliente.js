@@ -63,7 +63,7 @@ async function montarTabelaClientes() {
         // Inserindo as propriedades do icone de atualizar
         iconeAtualizar.src = "/assets/edit_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg";
         iconeAtualizar.alt = "editar";
-        iconeAtualizar.addEventListener("click", () => { alert('editar') });
+        iconeAtualizar.addEventListener("click", () => { window.location.href = `/pages/clientes/edicao-cliente.html?idCliente=${cliente.idCliente}` });
 
         // Inserindo as informações dos clientes
         tdIdCliente.textContent = cliente.idCliente;
@@ -109,19 +109,224 @@ function formatarCPF(cpf) {
  * @returns Telefone formatado
  */
 function formatarTelefone(telefone) {
-    // Remove caracteres não numéricos
+    // Remove todos os caracteres que não são números
     const telefoneLimpo = telefone.replace(/\D/g, '');
 
-    // Aplica a máscara (##) # ####-####
-    return telefoneLimpo.replace(/(\d{2})(\d{1})(\d{4})(\d{4})/, '($1) $2 $3-$4');
+    // Se o telefone tiver 11 dígitos, aplica a máscara com o dígito extra: (##) # ####-####
+    if (telefoneLimpo.length === 11) {
+        return telefoneLimpo.replace(/(\d{2})(\d{1})(\d{4})(\d{4})/, '($1) $2 $3-$4');
+    }
+
+    // Se o telefone tiver 10 dígitos, aplica a máscara tradicional: (##) ####-####
+    if (telefoneLimpo.length === 10) {
+        return telefoneLimpo.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
+    }
+
+    // Se não tiver 10 ou 11 dígitos, retorna o número original sem formatação
+    return telefone;
 }
 
-function removerCliente(cliente) {
+async function enviarFormularioCadastro(event) {
+    // Impede que o formulário seja enviado da forma tradicional (recarregando a página)
+    event.preventDefault();
+
+    // Cria um objeto cliente com os dados preenchidos no formulário
+    const cliente = {
+        nome: document.getElementById('nome-cliente').value, // Captura o valor do campo de nome
+        cpf: document.getElementById('cpf-cliente').value,  // Captura o valor do campo de CPF
+        telefone: document.getElementById('telefone-cliente').value // Captura o valor do campo de telefone
+    };
+
+    // Inicia um bloco try/catch para tratar possíveis erros na requisição
+    try {
+        // Exibe no console a URL que será usada na requisição (útil para testes e depuração)
+        console.log(`${enderecoServidor}${endpointClientes}`);
+
+        // Envia uma requisição HTTP PUT para a API, atualizando os dados do cliente
+        const respostaAPI = await fetch(`${enderecoServidor}${endpointClientes}`, {
+            method: 'POST', // método HTTP usado para atualizar dados
+            headers: {
+                'Content-type': 'application/json' // informa que os dados estão no formato JSON
+            },
+            body: JSON.stringify(cliente) // transforma o objeto cliente em uma string JSON para envio
+        });
+
+        // Verifica se a resposta da API foi bem-sucedida
+        if (!respostaAPI.ok) {
+            // Exibe um alerta informando que houve erro no cadastro
+            alert('Erro ao cadastrar cliente.');
+
+            // Lança um erro para interromper a execução da função
+            throw new Error(`Erro ao fazer requisição à API.`);
+        }
+
+        // Exibe um alerta informando que o cliente foi cadastrado com sucesso
+        alert('Cliente cadastrado com sucesso');
+
+        // Redireciona o usuário para a página de lista de clientes
+        window.location.href = '/pages/clientes/lista-clientes.html';
+    } catch (error) {
+        // Caso ocorra algum erro, exibe uma mensagem no console para ajudar na depuração
+        console.error('Erro ao fazer requisição.');
+        return;
+    }
+}
+
+/**
+ * Envia solicitação à API para remover um cliente
+ * @param {*} cliente Objeto do tipo Cliente
+ * @returns Exibe um alerta em caso de sucesso ou falha na requisição
+ */
+async function removerCliente(cliente) {
+    // Pergunta ao usuário se ele realmente quer deletar aquele registro
+    // A resposta é armazenada na variável confirmação (booleana)
     const confirmacao = confirm(`Deseja mesmo remover o cliente ${cliente.nome}?`);
 
-    if(confirmacao) {
-        console.log(`deletar ${cliente.idCliente}`);
+    // verifica se confirmação tem o valor **true**
+    if (confirmacao) {
+        // Faz a requisição à API passando o ID do cliente a ser removido
+        // armazena a reposta para saber se o cliente foi ou não removido
+        const respostaAPI = await fetch(`${enderecoServidor}${endpointClientes}/remover/${cliente.idCliente}`, {
+            method: 'PUT'
+        });
+
+        // Se o atributo ok da reposta da API for falso
+        // é mostrada uma mensagem de erro para o usuário, e um erro com os detalhes é mostrado nos logs
+        if (!respostaAPI.ok) {
+            // Mensagem de erro
+            alert('Erro ao remover cliente.');
+
+            // Lança um erro no logs com os detalhes desse erro
+            const errorText = await respostaAPI.text();
+            throw new Error(`Erro ao fazer requisição: ${errorText}`);
+        }
+
+        // Exibe um alerta de sucesso ao usuário
+        alert('Cliente removido com sucesso!');
+
+        // Recarrega a página
+        window.location.reload();
     } else {
+        // retorna um valor vazio, indicando que o usuário cancelou a ação
+        return;
+    }
+}
+
+/**
+ * Envia solicitação à API para buscar infromações de um cliente a partir do ID.
+ * Em caso de sucesso, chama a função preencherFormularioAtualizacao passando o objeto recuperado.
+ * @returns 
+ */
+async function buscarCliente() {
+    // Captura a parte da URL que contém os parâmetros da query string (ex: ?idCliente=123)
+    const queryString = window.location.search;
+
+    // Cria um objeto URLSearchParams para facilitar a leitura dos parâmetros da query string
+    const urlParams = new URLSearchParams(queryString);
+
+    // Extrai o valor do parâmetro 'idCliente' da URL
+    const idCliente = urlParams.get('idCliente');
+
+    // Inicia um bloco try/catch para tratar possíveis erros durante a requisição
+    try {
+        // Faz uma requisição HTTP GET para a API, buscando os dados do cliente com o ID especificado
+        const respostaAPI = await fetch(`${enderecoServidor}${endpointClientes}/${idCliente}`);
+
+        // Verifica se a resposta da API foi bem-sucedida (status HTTP 200–299)
+        if (!respostaAPI.ok) {
+            // Exibe um alerta informando que houve erro na busca
+            alert('Erro ao buscar cliente.');
+
+            // Lança um erro para interromper a execução da função
+            throw new Error(`Erro ao fazer requisição à API.`);
+        }
+
+        // Converte o corpo da resposta da API (em JSON) para um objeto JavaScript
+        const cliente = await respostaAPI.json();
+
+        // Chama a função preencherFormularioAtualizacao passando o objeto cliente como argumento
+        // Essa função irá preencher os campos do formulário com os dados recebidos
+        preencherFormularioAtualizacao(cliente);
+    } catch (error) {
+        // Caso ocorra algum erro na requisição ou no processamento, exibe um alerta ao usuário
+        alert('Erro ao buscar informações do cliente.');
+
+        // Exibe o erro completo no console para facilitar o diagnóstico durante o desenvolvimento
+        console.error(`Erro ao buscar informações do cliente. ${error}`);
+
+        // Encerra a função retornando vazio
+        return;
+    }
+}
+
+/**
+ * Preenche o formulário de atualização com os dados atuais do cliente
+ * @param {*} cliente Objeto com as informações do cliente
+ */
+function preencherFormularioAtualizacao(cliente) {
+    // Acessa o campo de ID do cliente no formulário e insere o valor vindo da API
+    document.getElementById('id-cliente').value = cliente.idCliente;
+
+    // Acessa o campo de nome do cliente e insere o nome recebido da API
+    document.getElementById('nome-cliente').value = cliente.nome;
+
+    // Acessa o campo de CPF e insere o CPF do cliente recebido da API
+    document.getElementById('cpf-cliente').value = cliente.cpf;
+
+    // Acessa o campo de telefone e insere o telefone do cliente recebido da API
+    document.getElementById('telefone-cliente').value = cliente.telefone;
+}
+
+/**
+ * Função responsável por enviar os dados atualizados do cliente para a API.
+ * Essa função é chamada quando o formulário de edição é enviado.
+ * 
+ * @param {*} event Evento de envio do formulário (submit)
+ * @returns Nada é retornado diretamente, mas a função redireciona ou exibe mensagens conforme o resultado
+ */
+async function enviarFormularioAtualizacao(event) {
+    // Impede que o formulário seja enviado da forma tradicional (recarregando a página)
+    event.preventDefault();
+
+    // Cria um objeto cliente com os dados preenchidos no formulário
+    const cliente = {
+        idCliente: document.getElementById('id-cliente').value, // Captura o valor do campo de ID do cliente
+        nome: document.getElementById('nome-cliente').value, // Captura o valor do campo de nome
+        cpf: document.getElementById('cpf-cliente').value,  // Captura o valor do campo de CPF
+        telefone: document.getElementById('telefone-cliente').value // Captura o valor do campo de telefone
+    };
+
+    // Inicia um bloco try/catch para tratar possíveis erros na requisição
+    try {
+        // Exibe no console a URL que será usada na requisição (útil para testes e depuração)
+        console.log(`${enderecoServidor}${endpointClientes}/${cliente.idCliente}`);
+
+        // Envia uma requisição HTTP PUT para a API, atualizando os dados do cliente
+        const respostaAPI = await fetch(`${enderecoServidor}${endpointClientes}/${cliente.idCliente}`, {
+            method: 'PUT', // método HTTP usado para atualizar dados
+            headers: {
+                'Content-type': 'application/json' // informa que os dados estão no formato JSON
+            },
+            body: JSON.stringify(cliente) // transforma o objeto cliente em uma string JSON para envio
+        });
+
+        // Verifica se a resposta da API foi bem-sucedida
+        if (!respostaAPI.ok) {
+            // Exibe um alerta informando que houve erro na atualização
+            alert('Erro ao atualizar cliente.');
+
+            // Lança um erro para interromper a execução da função
+            throw new Error(`Erro ao fazer requisição à API.`);
+        }
+
+        // Exibe um alerta informando que o cliente foi atualizado com sucesso
+        alert('Cliente atualizado com sucesso');
+
+        // Redireciona o usuário para a página de lista de clientes
+        window.location.href = '/pages/clientes/lista-clientes.html';
+    } catch (error) {
+        // Caso ocorra algum erro, exibe uma mensagem no console para ajudar na depuração
+        console.error('Erro ao fazer requisição.');
         return;
     }
 }
