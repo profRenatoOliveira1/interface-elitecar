@@ -196,9 +196,9 @@ async function removerCliente(cliente) {
             // Mensagem de erro
             alert('Erro ao remover cliente.');
 
-            // Lança um erro no logs com os detalhes desse erro
-            const errorText = await respostaAPI.text();
-            throw new Error(`Erro ao fazer requisição: ${errorText}`);
+            // Exibe no console um erro com o código de status da resposta e o texto retornado pela API.
+            // Isso ajuda a identificar o motivo da falha na requisição.
+            console.error('Erro na requisição:', respostaAPI.status, await respostaAPI.text());
         }
 
         // Exibe um alerta de sucesso ao usuário
@@ -237,8 +237,9 @@ async function buscarCliente() {
             // Exibe um alerta informando que houve erro na busca
             alert('Erro ao buscar cliente.');
 
-            // Lança um erro para interromper a execução da função
-            throw new Error(`Erro ao fazer requisição à API.`);
+            // Exibe no console um erro com o código de status da resposta e o texto retornado pela API.
+            // Isso ajuda a identificar o motivo da falha na requisição.
+            console.error('Erro na requisição:', respostaAPI.status, await respostaAPI.text());
         }
 
         // Converte o corpo da resposta da API (em JSON) para um objeto JavaScript
@@ -315,8 +316,9 @@ async function enviarFormularioAtualizacao(event) {
             // Exibe um alerta informando que houve erro na atualização
             alert('Erro ao atualizar cliente.');
 
-            // Lança um erro para interromper a execução da função
-            throw new Error(`Erro ao fazer requisição à API.`);
+            // Exibe no console um erro com o código de status da resposta e o texto retornado pela API.
+            // Isso ajuda a identificar o motivo da falha na requisição.
+            console.error('Erro na requisição:', respostaAPI.status, await respostaAPI.text());
         }
 
         // Exibe um alerta informando que o cliente foi atualizado com sucesso
