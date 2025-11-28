@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EliteCar - Lista de Carros</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <link rel="stylesheet" href="/css/listagens.css">
 </head>
-<body>
+
+<body onload="montarTabelaCarros()">
     <header class="cabecalho">
         <nav>
             <a href="/index.html">INÍCIO</a>
@@ -14,6 +18,34 @@
             <a href="/pages/pedido/lista-pedidos.html">PEDIDOS</a>
         </nav>
     </header>
-    <h1>Lista de Carros</h1>
+    <main class="conteudo-principal">
+        <div class="div-btn-novo">
+            <a href="#">NOVO CARRO</a>
+        </div>
+        <div class="div-titulo-tabela">
+            <h2>CARROS</h2>
+        </div>
+        <div class="div-vazio"></div>
+        <div class="div-tabela">
+            <table class="tabela">
+                <thead>
+                    <tr>
+                        <th>ID CARRO</th>
+                        <th>MARCA</th>
+                        <th>MODELO</th>
+                        <th>ANO</th>
+                        <th>COR</th>
+                        <th>AÇÕES</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="/js/carro.js"></script>
 </body>
+
 </html>
