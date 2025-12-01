@@ -57,12 +57,12 @@ async function montarTabelaCarros() {
         const iconeAtualizar = document.createElement('img');
 
         // Inserindo as propriedades do icone de deletar
-        iconeDeletar.src = "/assets/delete_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg";
+        iconeDeletar.src = "../../assets/delete_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg";
         iconeDeletar.alt = "remover";
         iconeDeletar.addEventListener("click", () => { alert('remover') });
 
         // Inserindo as propriedades do icone de atualizar
-        iconeAtualizar.src = "/assets/edit_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg";
+        iconeAtualizar.src = "../../assets/edit_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg";
         iconeAtualizar.alt = "editar";
         iconeAtualizar.addEventListener("click", () => { alert('editar') });
 

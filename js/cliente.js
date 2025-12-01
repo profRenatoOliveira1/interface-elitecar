@@ -325,7 +325,7 @@ async function enviarFormularioAtualizacao(event) {
         alert('Cliente atualizado com sucesso');
 
         // Redireciona o usuário para a página de lista de clientes
-        window.location.href = '/pages/clientes/lista-clientes.html';
+        window.location.href = '../../pages/clientes/lista-clientes.html';
     } catch (error) {
         // Caso ocorra algum erro, exibe uma mensagem no console para ajudar na depuração
         console.error('Erro ao fazer requisição.');
