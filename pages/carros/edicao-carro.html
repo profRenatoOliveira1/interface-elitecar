@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../../css/cadastro.css">
 </head>
 
-<body>
+<body onload="buscarCarro()">
     <header class="cabecalho">
         <a href="../../index.html">ÍNICIO</a>
         <a href="../clientes/lista-clientes.html">CLIENTES</a>
@@ -22,7 +22,11 @@
             <h1>EDITAR CADASTRO - CARRO</h1>
         </div>
         <div class="div-formulario">
-            <form action="" method="post" class="form-cadastro">
+            <form onsubmit="enviarFormularioAtualizacao(event)" action="" method="post" class="form-cadastro">
+                <label for="id-carro">
+                    ID carro
+                    <input type="text" id="id-carro" name="id-carro" readonly>
+                </label>
                 <label for="marca-carro">
                     Marca *
                     <input type="text" id="marca-carro" name="marca-carro" placeholder="Insira a marca do carro"

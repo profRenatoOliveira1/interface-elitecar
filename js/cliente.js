@@ -164,7 +164,7 @@ async function enviarFormularioCadastro(event) {
         alert('Cliente cadastrado com sucesso');
 
         // Redireciona o usuário para a página de lista de clientes
-        window.location.href = '/pages/clientes/lista-clientes.html';
+        window.location.href = '../../pages/clientes/lista-clientes.html';
     } catch (error) {
         // Caso ocorra algum erro, exibe uma mensagem no console para ajudar na depuração
         console.error('Erro ao fazer requisição.');
@@ -187,7 +187,7 @@ async function removerCliente(cliente) {
         // Faz a requisição à API passando o ID do cliente a ser removido
         // armazena a reposta para saber se o cliente foi ou não removido
         const respostaAPI = await fetch(`${enderecoServidor}${endpointClientes}/remover/${cliente.idCliente}`, {
-            method: 'PUT'
+            method: 'DELETE'
         });
 
         // Se o atributo ok da reposta da API for falso
