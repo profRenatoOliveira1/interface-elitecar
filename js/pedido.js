@@ -112,3 +112,96 @@ function formatarMoeda(valor) {
     // O resultado será uma string como "R$ 1.234,56", dependendo do valor.
     return valorFormatadoBRL.format(valor);
 }
+
+async function enviarFormularioCadastro(event) {
+    event.preventDefault();
+
+    const pedido = {
+        idCliente: document.getElementById('cliente').value,
+        idCarro: document.getElementById('carro').value,
+        dataPedido: document.getElementById('data-pedido').value,
+        valorPedido: document.getElementById('valor-pedido').value
+    }
+
+    try {
+        const respostaAPI = await fetch(`${enderecoServidor}${endpointPedidos}`, {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(pedido)
+        });
+
+        if(!respostaAPI.ok) {
+            alert(`Erro ao cadastrar pedido.`);
+
+            throw new Error('Erro ao fazer requisição à API.');
+        }
+
+        alert('Caro cadastrado com sucesso');
+
+        window.location.href = '../../pages/pedidos/lista-pedidos.html';
+    } catch (error) {
+        console.error(`Erro ao fazer requisição.`);
+        return;
+    }
+}
+
+async function removerPedido(pedido) {
+    const confirmacao = confirm(`Deseja mesmo remover o pedido ${pedido.idPedido}?`);
+
+    try {
+        if(confirmacao) {
+            const respostaAPI = await fetch(`${enderecoServidor}${endpointPedidos}`, {
+                method: 'DELETE'
+            });
+
+            if(!respostaAPI.ok) {
+                alert('Erro ao remover pedido.');
+
+                console.error(`Erro na requisição: `, respostaAPI.status, await respostaAPI.text());
+            
+                return;
+            }
+
+            alert(`Pedido removido com sucesso!`);
+
+            window.location.reload();
+        } else {
+            return;
+        }
+    } catch (error) {
+        console.error('Erro ao fazer requisição');
+        return;
+    }
+}
+
+function preencherFormularioAtualizacao(pedido) {
+    document.getElementById('cliente').value = pedido.idCliente;
+    document.getElementById('carro').value = pedido.idCarro;
+    document.getElementById('data-pedido').value = pedido.dataPedido;
+    document.getElementById('valor-pedido').value = pedido.valorPedido;
+}
+
+async function enviarFormularioAtualizacao(event) {
+    event.preventDefault();
+
+    const pedido = {
+        idCliente: document.getElementById('cliente').value,
+        idCarro: document.getElementById('carro').value,
+        dataPedido: document.getElementById('data-pedido').value,
+        valorPedido: document.getElementById('valor-pedido').value
+    }
+
+    try {
+        const respostaAPI = await fetch(`${enderecoServidor}${endpointPedidos}/${pedido.idPedido}`, {
+            method: 'PUT',
+            headers: {
+                'Content-type': 'application/json'
+            }
+        });
+    } catch (error) {
+        console.error('Erro ao fazer requisição.');
+        return;
+    }
+}
